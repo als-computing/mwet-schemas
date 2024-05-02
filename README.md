@@ -90,7 +90,7 @@ python -m pip install -e ".[ingest]"
 
 3. create a ```.env``` file following the pattern in ```example_env.env``` in the nmr_schema folder
 `
-4. run ```python ingest_nmr.py ``` to ingest the example data
+4. run ```python ingest_nmr.py``` to ingest the example data
 
 ## Next Step
 - schema for 2d NMR data
