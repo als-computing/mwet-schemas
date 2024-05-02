@@ -1,0 +1,85 @@
+id: https://mwet.utexas.edu/metadata/nmr
+name: nmr-1d
+description: |-
+  Metadata about NMR data
+imports:
+  - linkml:types
+prefixes:
+  nmr: https://github.com/als-computing/mwet-schema/src/nmr_schema/nmr.yaml
+  linkml: https://w3id.org/linkml/
+default_prefix: nmr
+default_range: string
+
+classes:
+
+  NMRDataset:
+    description: >-
+      The metadata associated with a 1D NMR dataset.
+    class_uri: schema:Person
+    mixins:
+      - HasAliases
+    slots:
+      - owner
+      - owner_email
+      - instrument_name
+      - principal_investigator
+      - proposal
+      - acquisition_date
+      - sample
+      - nuclide
+      - sepctrometer_frequency
+      - magnetic_field
+      - concentration
+      - solvent
+      - pulse_program
+      - gradient_list
+    slot_usage:
+      owner_email:
+        pattern: "^\\S+@[\\S+\\.]+\\S+"
+    in_subset:
+      - basic_subset
+  
+  HasAliases:
+    description: >-
+      A mixin applied to any class that can have aliases/alternateNames
+    mixin: true
+    attributes:
+      aliases:
+        multivalued: true
+        exact_mappings:
+          - schema:alternateName
+      
+  Container:
+    tree_root: true
+    slots:
+      - datasets
+
+slots:
+  owner:
+    required: true
+  owner_email:
+    required: true
+  instrument_name:
+    required: true
+  principal_investigator:
+  proposal:
+  acquisition_date:
+  sample:
+  nuclide:
+  sepctrometer_frequency:
+    range: float
+  magnetic_field:
+  concentration:
+  solvent:
+  pulse_program:
+  gradient_list:
+
+  datasets:
+    range: NMRDataset
+    inlined: true
+    inlined_as_list: true
+    multivalued: true
+
+subsets:
+  basic_subset:
+    description: A subset of the schema that handles basic information

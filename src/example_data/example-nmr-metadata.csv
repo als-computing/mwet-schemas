@@ -1,2 +1,2 @@
-owner,email,instrument_name,principal_investigator,proposal,acquisition_date,sample,nuclide,sepctrometer_frequency,magnetic_field,concentration,solvent,pulse_program,gradient_list
-Leo Gordon,leo@gmail.com,NMR,Leo's PI,MWET 0.0.0.0,12/12/23,empty,1H,300.15,empty,empty,empty,empty,empty
+owner,owner_email,principal_investigator,proposal,instrument_name,acquisition_date,sample,nuclide,sepctrometer_frequency,magnetic_field,concentration,solvent,pulse_program,gradient_list
+Leo Gordon,leo@gmail.com,Leo's PI,MWET 0.0.0.0,NMR,12/12/23,empty,1H,300.15,empty,empty,empty,empty,empty
