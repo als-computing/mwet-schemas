@@ -1,7 +1,6 @@
 *.tsv
 *.json
 src/mwet_schemas.egg-info/
-*.env
 .DS_Store
 
 # Byte-compiled / optimized / DLL files
@@ -68,3 +67,4 @@ data
 tiled/_version.py
 
 .env
+
