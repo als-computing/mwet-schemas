@@ -2,8 +2,8 @@ import logging
 from collections import OrderedDict
 from datetime import datetime
 from pathlib import Path
+import json
 
-import pandas as pd
 from pyscicat.client import ScicatClient, get_file_mod_time, get_file_size
 from pyscicat.model import (
     CreateDatasetOrigDatablockDto,
@@ -27,15 +27,16 @@ global_keywords = ["NMR"]
 # scicat metadata is seperate from scientific_metadata (do not duplicate)
 # note that this code requires the csv file only have one line for header, and one line for values
 metadata_path = (
-    "/Users/runbojiang/Desktop/LinkML_NMR/src/example_data/example-nmr-metadata.csv"
+    "metadata.json"
 )
-df = pd.read_csv(metadata_path, sep=",", header=None)
-header, values = df.iloc[0].tolist(), df.iloc[1].tolist()
-linkml_metadata = OrderedDict(zip(header, values))
+file = open(metadata_path)
+data = json.load(file)
+linkml_metadata = data['datasets'][0]
+file.close()
 
 scicat_metadata = {
     "owner": linkml_metadata["owner"],
-    "email": linkml_metadata["email"],
+    "email": linkml_metadata["owner_email"],
     "instrument_name": linkml_metadata["instrument_name"],
     "pi": linkml_metadata["principal_investigator"],
     "proposal": linkml_metadata["proposal"],
@@ -69,11 +70,12 @@ def ingest(
     # issues: List[Issue] = []
     issues = []
 
-    # read scientific_metadata from the csv file
+    # read scientific_metadata from the metadata.json file
     # only one row of metadata as of this protype (Apr 16)
-    # TODO: how to do this for multiple csv files???
-    header, values = df.iloc[0].tolist()[5:], df.iloc[1].tolist()[5:]
-    scientific_metadata = OrderedDict(zip(header, values))
+    keys = list(linkml_metadata.keys())
+    keys_to_keep = keys[5:]
+    scientific_metadata = OrderedDict({key: linkml_metadata[key] for key in keys_to_keep})
+    print(scientific_metadata)
 
     description = file_path.stem.replace("_", " ")
     filename = file_path.name
