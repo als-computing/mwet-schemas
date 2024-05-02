@@ -47,11 +47,11 @@ Schemasheets is part of the LinkML toolset that allows a LinkML data description
 Generation of spreadsheet through linkml schemasheets
 
 ```
-linkml2schemasheets-template -i nmr.yaml -o nmr_concise.tsv -s concise
+linkml2schemasheets-template -i src/nmr_schema/nmr_schema.yaml -o nmr_concise.tsv -s concise
 ```
 or
 ```
-linkml2schemasheets-template -i nmr.yaml -o nmr_exhaustive.tsv -s exhaustive
+linkml2schemasheets-template -i src/nmr_schema/nmr_schema.yaml -o nmr_exhaustive.tsv -s exhaustive
 ```
 
 ### 2. Generate json schema
@@ -59,7 +59,7 @@ linkml2schemasheets-template -i nmr.yaml -o nmr_exhaustive.tsv -s exhaustive
 Generating a corresponding (closed world) JSON-Schema definition (`nmr.schema.json`) for the NMR datasets:
 
 ```
-gen-json-schema --closed nmr.yaml  >nmr.schema.json
+gen-json-schema --closed src/nmr_schema/nmr_schema.yaml  >nmr.schema.json
 ```
 
 ### 3. Simple worked examples to validate the csv input metadata
@@ -67,14 +67,15 @@ gen-json-schema --closed nmr.yaml  >nmr.schema.json
 Check ("valdate") that some csv metadata (`my-nmr-metadata.csv`) complies with the SFX metadata defintion (`nmr.yaml`):
 
 ```
-linkml-validate -s nmr.yaml my-nmr-metadata.csv
+linkml-validate -s src/nmr_schema/nmr_schema.yaml src/example_data/my-nmr-metadata.csv
 ```
 
 ### 4. Convert validated csv file to json
 Specify the input csv file an output json file.
 ```
-python script.py my-nmr-metadata.csv output.json
+linkml-convert -s src/nmr_schema/nmr_schema.yaml -o src/nmr_schema/metadata.json --index-slot datasets src/example_data/example-nmr-metadata.csv 
 ```
+For more information on converting between different representations, visit this [linkmk documentation](https://linkml.io/linkml/data/conversion.html#cmdoption-linkml-convert-S)
 
 ### 5. Ingest NMR data and metadata
 An example metadata file named ```example-nmr-metadata.csv``` is provided, as well as an example data file named ```example-nmr-metadata.csv``` for ingesting to [SciCat](https://github.com/SciCatProject/pyscicat) database. This data was acquired at University of California, Santa Barbara by Leo Gordon and Raphaële Clément.
