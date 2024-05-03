@@ -13,7 +13,8 @@ classifiers = [
 ]
 
 dependencies = [
-          "linkml"
+          "linkml",
+          "schemasheets",
           ]
 
 [project.optional-dependencies]
