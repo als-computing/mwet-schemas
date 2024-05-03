@@ -18,14 +18,14 @@ This repository contains code to help manage schemas and workflows for managing 
 
 [LinkML](https://linkml.io/linkml/intro/tutorial.html) if you wish to work directly with these files. The [Quick Install Guide](https://linkml.io/linkml/intro/install.html) page gives more detailed information.
 
-1. Create a new conda environment
+1. Create a new conda environment called "linkml"
 
 ```
 conda create -n linkml python=3.10
 conda activate linkml
 ```
 
-2. Install linkml package
+2. Install packages as specified in ```pyproject.toml```
 
 ```
 python -m pip install -e .
@@ -37,7 +37,7 @@ python -m pip install -e .
 python -m pip install -e ".[ingest]"
 ```
 
-This command will install ingesting required packages, as specify in the ```pyproject.toml``` file.
+This command will install ingesting required packages, as specified in the ```pyproject.toml``` file.
 
 
 ### 1. Schemasheets
@@ -75,7 +75,7 @@ Specify the input csv file an output json file.
 ```
 linkml-convert -s src/nmr_schema/nmr_schema.yaml -o src/nmr_schema/metadata.json --index-slot datasets src/example_data/example-nmr-metadata.csv
 ```
-For more information on converting between different representations, visit this [linkmk documentation](https://linkml.io/linkml/data/conversion.html#cmdoption-linkml-convert-S)
+For more information on converting between different representations, visit this [linkmk documentation](https://linkml.io/linkml/data/conversion.html#cmdoption-linkml-convert-S).
 
 ### 5. Ingest NMR data and metadata
 An example metadata file named ```example-nmr-metadata.csv``` is provided, as well as an example data file named ```example-nmr-metadata.csv``` for ingesting to [SciCat](https://github.com/SciCatProject/pyscicat) database. This data was acquired at University of California, Santa Barbara by Leo Gordon and Raphaële Clément.
