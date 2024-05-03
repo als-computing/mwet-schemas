@@ -9,20 +9,6 @@ from ingest import ingest
 load_dotenv()
 logger = logging.getLogger(__name__)
 
-# env_file_path = ".env"
-
-# # Check if the file exists
-# if os.path.exists(env_file_path):
-#     # Open the file and read its contents
-#     with open(env_file_path, "r") as file:
-#         # Read all lines from the file
-#         env_contents = file.readlines()
-#         # Print each line
-#         for line in env_contents:
-#             print(line.strip())
-# else:
-#     print(f"The file '{env_file_path}' does not exist.")
-
 ROOT_FOLDER = os.getenv("ROOT_FOLDER")
 SCICAT_URL = os.getenv("SCICAT_URL")
 USERNAME = os.getenv("USERNAME")
