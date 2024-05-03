@@ -73,7 +73,7 @@ linkml-validate -s src/nmr_schema/nmr_schema.yaml src/example_data/my-nmr-metada
 ### 4. Convert validated csv file to json
 Specify the input csv file an output json file.
 ```
-linkml-convert -s src/nmr_schema/nmr_schema.yaml -o src/nmr_schema/metadata.json --index-slot datasets src/example_data/example-nmr-metadata.csv 
+linkml-convert -s src/nmr_schema/nmr_schema.yaml -o src/nmr_schema/metadata.json --index-slot datasets src/example_data/example-nmr-metadata.csv
 ```
 For more information on converting between different representations, visit this [linkmk documentation](https://linkml.io/linkml/data/conversion.html#cmdoption-linkml-convert-S)
 
@@ -89,8 +89,12 @@ python -m pip install -e ".[ingest]"
 ```
 
 3. create a ```.env``` file following the pattern in ```example_env.env``` in the nmr_schema folder
-`
-4. run ```python ingest_nmr.py``` to ingest the example data
+
+4. run the following command in terminal to to ingest the example data
+```
+cd src/nmr_schema
+python ingest_nmr.py
+```
 
 ## Next Step
 - schema for 2d NMR data
@@ -103,7 +107,7 @@ If you are developing this library, there are a few things to note.
 1. Install development dependencies:
 
 ```
-pip install .[dev]
+python -m pip install ".[dev]"
 ```
 
 2. Install pre-commit
