@@ -1,8 +1,8 @@
+import json
 import logging
 from collections import OrderedDict
 from datetime import datetime
 from pathlib import Path
-import json
 
 from pyscicat.client import ScicatClient, get_file_mod_time, get_file_size
 from pyscicat.model import (
@@ -26,12 +26,10 @@ global_keywords = ["NMR"]
 # Note: update the scicat_metadata based on the data you will upload
 # scicat metadata is seperate from scientific_metadata (do not duplicate)
 # note that this code requires the csv file only have one line for header, and one line for values
-metadata_path = (
-    "metadata.json"
-)
+metadata_path = "metadata.json"
 file = open(metadata_path)
 data = json.load(file)
-linkml_metadata = data['datasets'][0]
+linkml_metadata = data["datasets"][0]
 file.close()
 
 scicat_metadata = {
@@ -74,7 +72,9 @@ def ingest(
     # only one row of metadata as of this protype (Apr 16)
     keys = list(linkml_metadata.keys())
     keys_to_keep = keys[5:]
-    scientific_metadata = OrderedDict({key: linkml_metadata[key] for key in keys_to_keep})
+    scientific_metadata = OrderedDict(
+        {key: linkml_metadata[key] for key in keys_to_keep}
+    )
     print(scientific_metadata)
 
     description = file_path.stem.replace("_", " ")

@@ -1,4 +1,5 @@
 import glob
+import logging
 import os
 import pathlib
 
@@ -6,21 +7,21 @@ from dotenv import load_dotenv
 from ingest import ingest
 
 load_dotenv()
+logger = logging.getLogger(__name__)
 
+# env_file_path = ".env"
 
-env_file_path = ".env"
-
-# Check if the file exists
-if os.path.exists(env_file_path):
-    # Open the file and read its contents
-    with open(env_file_path, "r") as file:
-        # Read all lines from the file
-        env_contents = file.readlines()
-        # Print each line
-        for line in env_contents:
-            print(line.strip())
-else:
-    print(f"The file '{env_file_path}' does not exist.")
+# # Check if the file exists
+# if os.path.exists(env_file_path):
+#     # Open the file and read its contents
+#     with open(env_file_path, "r") as file:
+#         # Read all lines from the file
+#         env_contents = file.readlines()
+#         # Print each line
+#         for line in env_contents:
+#             print(line.strip())
+# else:
+#     print(f"The file '{env_file_path}' does not exist.")
 
 ROOT_FOLDER = os.getenv("ROOT_FOLDER")
 SCICAT_URL = os.getenv("SCICAT_URL")
@@ -29,6 +30,8 @@ INGEST_USER = os.getenv("INGEST_USER")
 PASSWORD = os.getenv("PASSWORD")
 INGEST_SPEC = os.getenv("INGEST_SPEC")
 DERIVED_FOLDER = os.getenv("DERIVED_FOLDER")
+
+logger.info("env file loaded")
 
 assert type(ROOT_FOLDER) is str and len(ROOT_FOLDER) != 0
 assert type(SCICAT_URL) is str and len(SCICAT_URL) != 0
@@ -57,7 +60,8 @@ if override_iterator is False:
 for ingest_file_str in ingest_files_iter:
     ingest_file_path = pathlib.Path(ingest_file_str)
     if ingest_file_path.exists():
-        print(ingest_file_path)
+        # print(ingest_file_path)
+        logger.info(ingest_file_path)
         if is_derived_folder is False:
             ingest(
                 ingestor_location,

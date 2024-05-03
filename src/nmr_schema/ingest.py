@@ -8,9 +8,8 @@ from pyscicat.client import from_credentials, from_token
 
 # from scicat_beamline.utils import Issue
 
-logger = logging.getLogger("scicat_ingest")
+logger = logging.getLogger(__name__)
 logger.setLevel("INFO")
-logname = "data_movement_733.log"
 handler = logging.StreamHandler()
 handler.suffix = "%Y%m%d"
 handler.setLevel("INFO")

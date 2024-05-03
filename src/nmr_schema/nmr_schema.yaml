@@ -38,7 +38,7 @@ classes:
         pattern: "^\\S+@[\\S+\\.]+\\S+"
     in_subset:
       - basic_subset
-  
+
   HasAliases:
     description: >-
       A mixin applied to any class that can have aliases/alternateNames
@@ -48,7 +48,7 @@ classes:
         multivalued: true
         exact_mappings:
           - schema:alternateName
-      
+
   Container:
     tree_root: true
     slots:
