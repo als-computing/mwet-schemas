@@ -88,7 +88,7 @@ To ingest the nmr data and metadata to [local SciCat](https://github.com/SciCatP
 python -m pip install -e ".[ingest]"
 ```
 
-3. create a ```.env``` file following the pattern in ```example_env.env``` in the nmr_schema folder
+3. create an ```.env``` file at the linkml_nmr folder following the pattern in ```.env.example``` file
 
 4. run the following command in terminal to to ingest the example data
 ```
