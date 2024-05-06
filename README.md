@@ -56,18 +56,18 @@ linkml2schemasheets-template -i src/nmr_schema/nmr_schema.yaml -o nmr_exhaustive
 
 ### 2. Generate json schema
 
-Generating a corresponding (closed world) JSON-Schema definition (`nmr.schema.json`) for the NMR datasets:
+Generating a corresponding JSON-Schema definition (`nmr.schema.json`) for the NMR datasets:
 
 ```
 gen-json-schema --closed src/nmr_schema/nmr_schema.yaml  >nmr.schema.json
 ```
 
-### 3. Simple worked examples to validate the csv input metadata
+### 3. Simple working examples to validate the csv input metadata
 
-Check ("valdate") that some csv metadata (`my-nmr-metadata.csv`) complies with the SFX metadata defintion (`nmr.yaml`):
+Check ("valdate") that example csv metadata (`src/example_data/example-nmr-metadata.csv`) complies with the SFX metadata defintion (`nmr_schema.yaml`):
 
 ```
-linkml-validate -s src/nmr_schema/nmr_schema.yaml src/example_data/my-nmr-metadata.csv
+linkml-validate -s src/nmr_schema/nmr_schema.yaml src/example_data/example-nmr-metadata.csv
 ```
 
 ### 4. Convert validated csv file to json
