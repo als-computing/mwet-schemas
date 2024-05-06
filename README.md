@@ -53,6 +53,7 @@ or
 ```
 linkml2schemasheets-template -i src/nmr_schema/nmr_schema.yaml -o nmr_exhaustive.tsv -s exhaustive
 ```
+[exhaustive|concise] represents report style.
 
 ### 2. Generate json schema
 
